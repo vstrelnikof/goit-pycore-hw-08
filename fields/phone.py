@@ -10,3 +10,13 @@ class Phone(Field):
     @staticmethod
     def validate(value):
         return value.isdigit() and len(value) == 10
+
+    @property
+    def value(self):
+        return self._value
+
+    @value.setter
+    def value(self, value):
+        if not self.validate(value):
+            raise ValueError("Phone number must contain exactly 10 digits")
+        self._value = value

@@ -12,6 +12,8 @@ def input_error(func):
             return func(*args, **kwargs)
         except (KeyError, ValueError, IndexError, TypeError) as e:
             return f"Error: {e}"
+        except Exception as e:
+            return f"Unexpected error: {e}"
     return inner
 
 class AddressBook(UserDict):
